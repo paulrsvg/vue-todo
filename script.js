@@ -57,13 +57,13 @@ var app = new Vue({
                 return !item.completed;
             });
         },
-        dragItem(){
+        dragItem(item){
             this.drag = item;
         },
-        dropItem(){
+        dropItem(item){
             const indexItem = this.todos.indexOf(this.drag);
             const indexTarget = this.todos.indexOf(item);
-            this.todos.splice(indexItem, 1);
+            this.todos.splice(indexItem, 1); 
             this.todos.splice(indexTarget, 0, this.drag);
         },
     }
