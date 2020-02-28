@@ -11,5 +11,6 @@ var app = new Vue({
             text: "profit",
             completed: false,
         }],
+        message: '',
     },
 });
