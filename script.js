@@ -13,6 +13,7 @@ var app = new Vue({
         }],
         message: '',
         show: 'all',
+        drag: {},
     },
     computed: {
         activeTodos() {
@@ -55,6 +56,15 @@ var app = new Vue({
             this.todos = this.todos.filter(item => {
                 return !item.completed;
             });
+        },
+        dragItem(){
+            this.drag = item;
+        },
+        dropItem(){
+            const indexItem = this.todos.indexOf(this.drag);
+            const indexTarget = this.todos.indexOf(item);
+            this.todos.splice(indexItem, 1);
+            this.todos.splice(indexTarget, 0, this.drag);
         },
     }
 });

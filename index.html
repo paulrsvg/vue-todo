@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
   <title>Vue Todo</title>
 </head>
-
 <body>
   <div id = "app">
   <h1>A List of Things to Do</h1>
@@ -23,7 +21,7 @@
     <button v-on:click="deleteCompleted()">Delete Completed</button>
   </div>
     <ul>
-      <li v-for="item in filteredTodos">
+      <li v-for="item in filteredTodos" draggable = "true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
         <input type="checkbox" v-model="item.completed"/>
         <label v-bind:class="{completed: item.completed}">{{ item.text }}</label>
         <button v-on:click="deleteItem(item)" class="delete">X</button>
@@ -33,5 +31,4 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="/script.js"></script>
 </body>
-
 </html>
