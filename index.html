@@ -12,13 +12,15 @@
   <div id = "app">
   <h1>A List of Things to Do</h1>
   <form v-on:submit.prevent="addItem">
-    <input type = "text" v-model = "message">
+    <input type = "text" v-model = "message"/>
     <button type = "submit">Add</button>
 
   </form>
     <ul>
       <li v-for="item in todos">
-        <label>{{ item.text }}</label>
+        <input type="checkbox" v-model="item.completed"/>
+        <label v-bind:class="{completed: item.completed}">{{ item.text }}</label>
+        <button v-on:click="deleteItem(item)" class="delete">X</button>
       </li>
     </ul>
   </div>

@@ -13,4 +13,15 @@ var app = new Vue({
         }],
         message: '',
     },
+    methods: {
+        addItem() {
+            this.todos.push({text: this.message, completed: false});
+            this.message = '';
+        },
+        deleteItem(item) {
+            var index = this.todos.indexOf(item);
+            if (index > -1)
+                this.todos.splice(index,1);
+        }, 
+    }
 });
